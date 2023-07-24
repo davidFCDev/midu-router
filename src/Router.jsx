@@ -24,6 +24,8 @@ export function Router({ routes = [], DefaultComponent = () => <h1>404</h1> }) {
   const Page = routes.find(({ path }) => {
     if (path === currentPath) return true;
 
+    // usamos path-to-regexp para detectar rutas dinamicas
+    
     const matcherUrl = match(path, { decode: decodeURIComponent });
     const matched = matcherUrl(currentPath);
     if (!matched) return false;
