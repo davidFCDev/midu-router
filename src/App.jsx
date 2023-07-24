@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { EVENTS } from "./consts";
+
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 
+const routes = [
+  {
+    path: "/",
+    Component: HomePage,
+  },
+  {
+    path: "/about",
+    Component: AboutPage,
+  },
+];
 
-
-function App() {
+function Router({ routes = [], DefaultComponent = () => <h1>404</h1> }) {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
@@ -23,12 +33,16 @@ function App() {
     };
   }, []);
 
-  return (
-    <main>
-      {currentPath === "/" && <HomePage />}
-      {currentPath === "/about" && <AboutPage />}
-    </main>
-  );
+  const Page = routes.find(({ path }) => path === currentPath)?.Component;
+  return Page ? <Page /> : <DefaultComponent />
+}
+
+function App() {
+  return <main>
+    <Router routes={routes}>
+      
+    </Router>
+  </main>;
 }
 
 export default App;
