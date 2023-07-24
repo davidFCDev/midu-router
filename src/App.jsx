@@ -14,8 +14,8 @@ const appRoutes = [
     Component: AboutPage,
   },
   {
-    path: "/twitch",
-    Component: () => <h1>Nuevo Twitch</h1>,
+    path: "/search/:query",
+    Component: () => <h1>Buscador</h1>,
   },
 ];
 
