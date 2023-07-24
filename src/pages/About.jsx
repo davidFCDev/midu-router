@@ -1,4 +1,4 @@
-import { navigate } from "../App";
+import { Link } from "../Link";
 
 export default function AboutPage() {
   return (
@@ -12,7 +12,7 @@ export default function AboutPage() {
         />
         <p>Creando un clon de React Router!</p>
       </div>
-      <button onClick={() => navigate("/")}>Ir a la Home</button>
+      <Link to={'/'}>Ir a la Home</Link>
     </>
   );
 }
