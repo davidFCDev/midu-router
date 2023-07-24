@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function HomePage() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Home</h1>
+      <p>Página de ejemplo para crear React Router desde cero</p>
+      <a href="/about">Ir a Sobre nosotros</a>
     </>
-  )
+  );
 }
 
-export default App
+function AboutPage() {
+  return (
+    <>
+      <h1>About</h1>
+      <div>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg"
+          alt="elon musk"
+        />
+        <p>!Creando un clon de React Router!</p>
+      </div>
+      <a href="/home">Ir a la Home</a>
+    </>
+  );
+}
+
+function App() {
+  return <h1>Midu Router</h1>;
+}
+
+export default App;
