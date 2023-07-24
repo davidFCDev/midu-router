@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const NAVIGATION_EVENT = "pushstate";
@@ -15,7 +15,7 @@ function HomePage() {
     <>
       <h1>Home</h1>
       <p>Página de ejemplo para crear React Router desde cero</p>
-      <a href="/about">Ir a Sobre nosotros</a>
+      <button onClick={() => navigate("/about")}>Ir a Sobre nosotros</button>
     </>
   );
 }
@@ -32,13 +32,26 @@ function AboutPage() {
         />
         <p>Creando un clon de React Router!</p>
       </div>
-      <a href="/">Ir a la Home</a>
+      <button onClick={() => navigate("/")}>Ir a la Home</button>
     </>
   );
 }
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const onLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener(NAVIGATION_EVENT, onLocationChange);
+
+    return () => {
+      window.removeEventListener(NAVIGATION_EVENT, onLocationChange);
+    };
+  }, []);
+
   return (
     <main>
       {currentPath === "/" && <HomePage />}
